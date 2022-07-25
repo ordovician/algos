@@ -128,9 +128,9 @@ func ExampleFilter() {
 func ExampleReduce() {
 	var numbers []int = []int{1, 2, 3, 4, 5}
 
-	iter := SliceIterator[int]{Elements: numbers}
+	iter := NewSliceIterator(numbers)
 
-	result := Reduce[int, int](&iter, func(accum, x int) int {
+	result := Reduce(iter, func(accum, x int) int {
 		return accum + x
 	})
 
