@@ -11,7 +11,7 @@ type SliceIterator[T any] struct {
 	index    int
 }
 
-func NewSliceIterator[T any](xs []T) *SliceIterator[T] {
+func NewSliceIterator[T any](xs []T) Iterator[T] {
 	return &SliceIterator[T]{
 		Elements: xs,
 	}

@@ -4,24 +4,23 @@ An experiment in using Go Generics to create iterators and build algorithms arou
 
 Here is an example of combining different algorithms in a code example. Notice that because Go does not have function overloading we need different functions for creating each iterator type. `NewSliceIterator` is used to create an iterator over a slice. A different function would be needed to iterate over a dictionary or binary tree.
 
-
 	var numbers []int = []int{1, 2, 3, 4, 5}
-	
-    // Create iterator over a slice of integers
-    iter := NewSliceIterator[int](numbers)
+
+	// Create iterator over a slice of integers
+	iter := NewSliceIterator(numbers)
 
 	// Pick values larger than 3
-	filtered := Filter[int](iter, func(x int) bool {
+	filtered := Filter(iter, func(x int) bool {
 		return x > 3
 	})
 
 	// Square all values
-	mapped := Map[int](filtered, func(x int) int {
+	mapped := Map(filtered, func(x int) int {
 		return x * x
 	})
 
 	// Collect result from collection
-	result := Collect[int](mapped)
+	result := Collect(mapped)
 
 	for _, x := range result {
 		fmt.Println(x)
