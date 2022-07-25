@@ -1,8 +1,8 @@
 package algos
 
 type mapIterator[T any] struct {
-	source   Iterator[T]
-	function func(T) T
+	source Iterator[T]
+	mapper func(T) T
 }
 
 // Get next element
@@ -13,7 +13,7 @@ func (iter *mapIterator[T]) Next() bool {
 // Get value of current elemented visisted by iterator
 func (iter *mapIterator[T]) Value() T {
 	value := iter.source.Value()
-	return iter.function(value)
+	return iter.mapper(value)
 }
 
 func Map[T any](iter Iterator[T], f func(T) T) Iterator[T] {
